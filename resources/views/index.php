@@ -84,7 +84,7 @@
 </head>
 <body>
 <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -98,7 +98,7 @@
         </div>
     </div>
 </header>
-<div class="container-fluid">
+<div class="container">
     <p>Warning, translations are not visible until they are exported back to the app/lang file, using <code>php artisan translation:export</code> command or publish button.</p>
     <div class="alert alert-success success-import" style="display:none;">
         <p>Done importing, processed <strong class="counter">N</strong> items! Reload this page to refresh the groups!</p>

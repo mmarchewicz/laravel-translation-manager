@@ -78,17 +78,17 @@ class ManagerServiceProvider extends ServiceProvider {
 
         $router->group($config, function($router)
         {
-            $router->get('view/{groupKey?}', 'Controller@getView')->where('groupKey', '.*');
-            $router->get('/{groupKey?}', 'Controller@getIndex')->where('groupKey', '.*');
-            $router->post('/add/{groupKey}', 'Controller@postAdd')->where('groupKey', '.*');
-            $router->post('/edit/{groupKey}', 'Controller@postEdit')->where('groupKey', '.*');
-            $router->post('/groups/add', 'Controller@postAddGroup');
-            $router->post('/delete/{groupKey}/{translationKey}', 'Controller@postDelete')->where('groupKey', '.*');
-            $router->post('/import', 'Controller@postImport');
-            $router->post('/find', 'Controller@postFind');
-            $router->post('/locales/add', 'Controller@postAddLocale');
-            $router->post('/locales/remove', 'Controller@postRemoveLocale');
-            $router->post('/publish/{groupKey}', 'Controller@postPublish')->where('groupKey', '.*');
+            $router->get('view/{groupKey?}', ['as' => 'translation-manager-view', 'uses' => 'Controller@getView'])->where('groupKey', '.*');
+            $router->get('/{groupKey?}', ['as' => 'translation-manager-view-index', 'uses' => 'Controller@getIndex'])->where('groupKey', '.*');
+            $router->post('/add/{groupKey}', ['as' => 'translation-manager-add', 'uses' => 'Controller@postAdd'])->where('groupKey', '.*');
+            $router->post('/edit/{groupKey}', ['as' => 'translation-manager-edit', 'uses' => 'Controller@postEdit'])->where('groupKey', '.*');
+            $router->post('/groups/add', ['as' => 'translation-manager-groups-add', 'uses' => 'Controller@postAddGroup']);
+            $router->post('/delete/{groupKey}/{translationKey}', ['as' => 'translation-manager-groups-delete-key', 'uses' => 'Controller@postDelete'])->where('groupKey', '.*');
+            $router->post('/import', ['as' => 'translation-manager-import', 'uses' => 'Controller@postImport']);
+            $router->post('/find', ['as' => 'translation-manager-find', 'uses' => 'Controller@postFind']);
+            $router->post('/locales/add', ['as' => 'translation-manager-locales-add', 'uses' => 'Controller@postAddLocale']);
+            $router->post('/locales/remove', ['as' => 'translation-manager-locales-remove', 'uses' => 'Controller@postRemoveLocale']);
+            $router->post('/publish/{groupKey}', ['as' => 'translation-manager-publish', 'uses' => 'Controller@postPublish'])->where('groupKey', '.*');
         });
 	}
 
